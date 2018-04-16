@@ -1,18 +1,33 @@
-
 <html>
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <title>肥貓與肥貓們的溫馨小窩!</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#hiddenbox').hide();
 
+  $('a#mode1').click(function() {
+    $('#hiddenbox').slideToggle(400);
+    $('a#mode1').hide();
+    return false;
+  });
+  
+  $('a#mode2').click(function() {
+    $('#hiddenbox').slideToggle(400);
+    $('a#mode1').show();
+    return false;
+  });
+});
+</script>
 
 
 <style type="text/css">
-
 body{
   background-color: #ffed97;
 }
-
 .font_css {
 	color: #996633;
 	font-size: 17px;
@@ -23,7 +38,6 @@ body{
 	font-size: 20px;
 	font-weight: bold;
 }
-
 span {
 	font-family: Microsoft JhengHei;
 }
@@ -80,13 +94,23 @@ span {
 			<li><span class="bif_font_css">定時清潔身體</span><br>
 			<br><span>如居住環境潮濕，家裡又積聚雜物，貓咪經常有機會走來走去，容易黏得滿身灰塵，主人更應隔2至3星期便替貓咪清潔身體；相反，主人若能把家居保持乾爽清潔，貓咪約隔2個月才需洗澡一次。</span><br>
 			<br></li>
+			
+               	
+			<div id="hiddenbox">
 			<li><span class="bif_font_css">定時定量餵食</span><br>
 			<br><span>在餵食方面，大家宜以「定時定量」的方式餵食金吉拉貓，因為這樣可讓主人更容易發現貓咪何時沒有胃口，及早提防貓咪生病或消化不良等現象。</span><br>
 			<br></li>
 			<li><span class="bif_font_css">飼料多選用乾糧</span><br>
 			<br><span>金吉拉貓宜多吃乾糧，這有助於貓咪鍛鍊咀嚼能力，同時硬的乾糧可助清除牙石；相反，濕糧由於較易黏在牙齒上，難以清除，反而會令貓咪形成牙石。當然貓咪多吃乾糧之餘，偶爾吃點濕糧也無大礙。</span></li>
+            <br><a id="mode2" href="#">點我顯示部分內容</a>
+            </div>
+            
+            <a id="mode1" href="#">點我顯示完整內容</a> 
+            
+            
 		</ol>
-	<p>&nbsp;&nbsp;&nbsp; 參考資料：<a href="http://www.twwiki.com/wiki/金吉拉">http://www.twwiki.com/wiki/%E9%87%91%E5%90%89%E6%8B%89</a>&nbsp;</p><br><br>
+	<br><br>
+    <p> 參考資料：<a href="http://www.twwiki.com/wiki/金吉拉">http://www.twwiki.com/wiki/%E9%87%91%E5%90%89%E6%8B%89</a>&nbsp;</p><br><br>
 
 
 	
