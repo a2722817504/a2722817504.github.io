@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,7 +17,7 @@ $(function(){
 		} while(num==last_num1);
 		$("#change").attr("src","pause.jpg");
 		
-		$("#now").text("1_"+num);
+		$(".now").text("1_"+num);
 		
 		audio.get(0).pause();	
 		audio.attr("src","music1_"+num+".mp3"); 
@@ -35,7 +34,7 @@ $(function(){
 		} while(num==last_num2);
 		$("#change").attr("src","pause.jpg");
 		
-		$("#now").text("2_"+num);
+		$(".now").text("2_"+num);
 		
 		audio.get(0).pause();	
 		audio.attr("src","music2_"+num+".mp3"); 
@@ -52,7 +51,7 @@ $(function(){
 		} while(num==last_num3);
 		$("#change").attr("src","pause.jpg");
 		
-		$("#now").text("3_"+num);
+		$(".now").text("3_"+num);
 		
 		audio.get(0).pause();	
 		audio.attr("src","music3_"+num+".mp3"); 
@@ -69,7 +68,7 @@ $(function(){
 		} while(num==last_num4);
 		$("#change").attr("src","pause.jpg");
 		
-		$("#now").text("4_"+num);
+		$(".now").text("4_"+num);
 		
 		audio.get(0).pause();	
 		audio.attr("src","music4_"+num+".mp3"); 
@@ -93,7 +92,7 @@ $(function(){
 		} while(num==current_num);
 		$("#change").attr("src","pause.jpg");
 		
-		$("#now").text(current_class+"_"+num);
+		$(".now").text(current_class+"_"+num);
 		
     	audio.currentTime = 0;
 		audio.attr("src","music"+current_class+"_"+num+".mp3"); 
@@ -174,8 +173,48 @@ $(function(){
 		   //Update progress bar and video currenttime
 	    $('.timeBar').css('width', percentage+'%');
 	    audio[0].currentTime = maxduration * percentage / 100;
-};
+	};
+	
+	$('.volume').mousedown(function(e) {
+	var position2 = e.pageX - $('.volume').offset().left - 17;
+	var percentage2 = 100 * position2 / 62;
 
+	   if(percentage2 < 10) {
+	   	  $(".volumeBar").attr("src","vol_0.png");
+	   }
+	   else if(percentage2 < 30) {
+	      $(".volumeBar").attr("src","vol_20.png");
+	   }
+	   else if(percentage2 < 50) {
+	      $(".volumeBar").attr("src","vol_40.png");
+	   }
+	   else if(percentage2 < 70) {
+	      $(".volumeBar").attr("src","vol_60.png");
+	   }
+	   else if(percentage2 < 90) {
+	      $(".volumeBar").attr("src","vol_80.png");
+	   }
+	   else {
+	      $(".volumeBar").attr("src","vol_100.png");
+	   }
+	
+	   audio[0].volume = percentage2 / 100;
+	});
+
+	$("#but_next").click(function() {
+		do{
+			num = get_random_val();
+		} while(num==current_num);
+		
+		$(".now").text(current_class+"_"+num);
+		
+    	audio.currentTime = 0;
+		audio.attr("src","music"+current_class+"_"+num+".mp3"); 
+		audio.get(0).play();
+		current_num = num;	
+		change = 0;
+		
+	});
 
 });
 </script>
@@ -195,6 +234,7 @@ $(function(){
    height: 75px;
    background-color: #000000;
 }
+
 .timeBar
 {
    position: absolute;
@@ -203,6 +243,34 @@ $(function(){
    width: 0;
    height: 20px;
    background-color: #ff0000;
+}
+
+.volume
+{
+   position: relative;
+   width: 100px;
+   height: 100px;
+}
+
+.next
+{
+   position: relative;
+   width: 100px;
+   height: 100px;
+}
+
+.time
+{
+   position: relative;
+   width: 100px;
+   height: 50px;
+}
+
+.song_name
+{
+   position: relative;
+   width: 300px;
+   height: 50px;
 }
 
 </style>
@@ -225,31 +293,44 @@ $(function(){
 	
 	<br><br><br>
 	
-	<div id="player" class="position_player" style="width: 500px; height: 300px;display: none;"><!-- display: none;-->
+	<div id="player" class="position_player" style="width: 670px; height: 200px; display: none"><!-- ;display: none-->
 		<br>&nbsp;&nbsp;
 		<button id="but_switch" style="width: 80px; height: 80px; background-color: #222222;" type="button">
 			<img id="change" src="pause.jpg">
 		</button>&nbsp;&nbsp;
-
-  		<div class="progressBar" style="left: 100px; top: -80px">
+		
+  		<div class="progressBar" style="left: 105px; top: -80px">
    			<div class="timeBar"></div>
 		</div>&nbsp;&nbsp;	
 		
-   		<span class="current"></span>
-  		<span class="duration"></span>
-  		
+		<div class="volume" style="left: 415px; top: -173px">
+			<img src="vol_100.png" class="volumeBar">
+		</div>&nbsp;&nbsp;
 
+		<div class="next" style="left: 525px; top: -293px">
+			<button id="but_next" style="width: 80px; height: 80px; background-color: #222222;" type="button">
+				<img id="next_one" src="next.jpg">
+			</button>
+		</div>
 
+		<div class="time" style="left: 110px; top: -293px">
+   			<span class="current"></span>
+  			<span class="duration"></span>
+		</div>
 		
+		<div class="song_name" style="left: 110px; top: -305px">
+   			<span class="now"></span>
+		</div>
+
 	</div>
 	
-	<p>-----------最上列按鈕是四種不同風格的音樂，按下後，播放器就會出現------------------------------</p>
-	<p>-----------目前共4*5首，任意按下按鍵就會播放該風格音樂，連續按同一個按鍵也不會連續重複----------</p>
-	<p>-----------播放器目前三個功能(1)開始/暫停按鍵(2)可拉式拉條(3)顯示目前/整首時間-----------------</p>
-	<p>-----------這些是基本功能，還沒使用CSS套件以及大量音樂，功能也可以再加------------------------</p>	
-	<p>-----------以下是幫助你判斷，最後不會有這些--------------------------------------------------</p>	
+	<p>-----------最上列按鈕是四種不同風格的音樂，按下後，播放器就會出現</p>
+	<p>-----------目前共4*5首，任意按下按鍵就會播放該風格音樂，連續按同一個按鍵也不會連續重複</p>
+	<p>-----------播放器目前六種功能(1)開始/暫停按鍵(2)可拉式拉條(3)可調式音量(4)切歌鍵(5)顯示目前/整首時間(6)顯示歌名</p>
+	<p>-----------音量鍵不想做那麼仔細，所以只分六種；歌名等確定資料之後再改</p>	
+	<p>-----------這些是基本功能，還沒使用CSS以及大量音樂(你們要做的)</p>	
+	<p>-----------以下是幫助你判斷，最後不會有這些</p>	
 	<audio id="play" controls="controls" src="music1_1.mp3" ></audio>
-	<p>現在正在播<div id="now"></div></p>
 	
 </body>
 </html>
