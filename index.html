@@ -1,12 +1,10 @@
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>播放器</title>
-<link rel="stylesheet" href="/../../../../code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<script src="/../../../../code.jquery.com/jquery-3.3.1.js"></script>
-<script src="/../../../../code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-3.3.1.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script>
 $(function(){ 
 	var num,last_num1,last_num2,last_num3,last_num4,current_num,current_class,change=0;
@@ -122,27 +120,22 @@ $(function(){
 			change = 0;
 		}
 	});
-
 	audio.on('timeupdate', function() {
 		var ltime_cur = parseInt(audio[0].currentTime);
 		var lmm_cur = parseInt(ltime_cur/60);
   		var lss_cur = ltime_cur - lmm_cur*60;
    		$('.current').text((lmm_cur<10?"0":"")+lmm_cur+":"+(lss_cur<10?"0":"")+lss_cur+"/");
-
    		var currentPos = audio[0].currentTime; //Get currenttime
    		var maxduration = audio[0].duration; //Get video duration
    		var percentage = 100 * currentPos / maxduration; //in %
    		$('.timeBar').css('width', percentage+'%');
-
   	});
-
 	audio.on('loadedmetadata', function() {
 		var ltime = parseInt(audio[0].duration);
 		var lmm = parseInt(ltime/60);
   		var lss = ltime - lmm*60;
    		$('.duration').text((lmm<10?"0":"")+lmm+":"+(lss<10?"0":"")+lss);
 	});
-
 	var timeDrag = false;   /* Drag status */
 	$('.progressBar').mousedown(function(e) {
    		timeDrag = true;
@@ -161,7 +154,6 @@ $(function(){
 	      updatebar(e.pageX);
 	   }
 	});
-
 	var updatebar = function(x) {
    		var progress = $('.progressBar');
    		var maxduration = audio[0].duration; //Video duraiton
@@ -184,14 +176,12 @@ $(function(){
 	$('.volume').mousedown(function(e) {
 	var position2 = e.pageX - $('.volume').offset().left - 20;
 	var percentage2 = 100 * position2 / 62;
-
    		if(percentage2 > 100) {
    		   percentage2 = 100;
    		}
    		if(percentage2 < 0) {
    		   percentage2 = 0;
    		}
-
 	   if(percentage2 < 10) {
 	   	  $(".volumeBar").attr("src","vol_0.png");
 	   }
@@ -210,10 +200,8 @@ $(function(){
 	   else {
 	      $(".volumeBar").attr("src","vol_100.png");
 	   }
-
 	   audio[0].volume = percentage2 / 100;
 	});
-
 	$("#but_next").click(function() {
 		do{
 			num = get_random_val();
@@ -228,7 +216,6 @@ $(function(){
 		change = 0;
 		
 	});
-
 });
 </script>
 
@@ -239,12 +226,10 @@ $(function(){
 	left: 50%;
 	margin-left: -450px;
 }
-
 .position_player {
 	padding: 50px;
 	background-color: silver;	 
 }
-
 .progressBar
 {
    position: relative;
@@ -252,7 +237,6 @@ $(function(){
    height: 75px;
    background-color: #000000;
 }
-
 .timeBar
 {
    position: absolute;
@@ -262,35 +246,30 @@ $(function(){
    height: 20px;
    background-color: #ff0000;
 }
-
 .volume
 {
    position: relative;
    width: 100px;
    height: 100px;
 }
-
 .next
 {
    position: relative;
    width: 100px;
    height: 100px;
 }
-
 .time
 {
    position: relative;
    width: 100px;
    height: 50px;
 }
-
 .song_name
 {
    position: relative;
    width: 300px;
    height: 50px;
 }
-
 </style>
 
 </head>
