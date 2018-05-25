@@ -19,6 +19,7 @@ $(function(){
 		$("#change").attr("src","pause.jpg");
 		
 		$(".now").text("1_"+num);
+		document.getElementById('bgc').style.backgroundColor = "#FFCCCC";
 		
 		audio.get(0).pause();	
 		audio.attr("src","music1_"+num+".mp3"); 
@@ -34,6 +35,7 @@ $(function(){
 			num = get_random_val();
 		} while(num==last_num2);
 		$("#change").attr("src","pause.jpg");
+		document.getElementById('bgc').style.backgroundColor = "#FFFFCC";
 		
 		$(".now").text("2_"+num);
 		
@@ -51,6 +53,7 @@ $(function(){
 			num = get_random_val();
 		} while(num==last_num3);
 		$("#change").attr("src","pause.jpg");
+		document.getElementById('bgc').style.backgroundColor = "#CCFFCC";
 		
 		$(".now").text("3_"+num);
 		
@@ -68,6 +71,7 @@ $(function(){
 			num = get_random_val();
 		} while(num==last_num4);
 		$("#change").attr("src","pause.jpg");
+		document.getElementById('bgc').style.backgroundColor = "#DDDDFF";
 		
 		$(".now").text("4_"+num);
 		
@@ -228,12 +232,8 @@ $(function(){
 </script>
 
 <style type="text/css">
-body {
-	background-color: #FFCCCC;
-}
 .out_player {
 	padding: 50px;
-	background-color: #FFCCCC;
 	position: absolute;
 	left: 50%;
 	margin-left: -450px;
@@ -294,7 +294,7 @@ body {
 
 </head>
 
-<body>
+<body id="bgc" style="background-color: #FFFFFF">
 	
 	<div class="out_player" style="width: 800px; height: 500px; line-height:0px">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
