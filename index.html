@@ -180,6 +180,13 @@ $(function(){
 	var position2 = e.pageX - $('.volume').offset().left - 20;
 	var percentage2 = 100 * position2 / 62;
 
+   		if(percentage2 > 100) {
+   		   percentage2 = 100;
+   		}
+   		if(percentage2 < 0) {
+   		   percentage2 = 0;
+   		}
+
 	   if(percentage2 < 10) {
 	   	  $(".volumeBar").attr("src","vol_0.png");
 	   }
@@ -198,7 +205,7 @@ $(function(){
 	   else {
 	      $(".volumeBar").attr("src","vol_100.png");
 	   }
-	
+
 	   audio[0].volume = percentage2 / 100;
 	});
 
