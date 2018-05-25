@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -220,11 +221,20 @@ $(function(){
 </script>
 
 <style type="text/css">
+body {
+	background-color: #FFCCCC;
+}
+.out_player {
+	padding: 50px;
+	background-color: #FFCCCC;
+	position: absolute;
+	left: 50%;
+	margin-left: -450px;
+}
+
 .position_player {
-	margin-left: 250px;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	background-color:silver;
+	padding: 50px;
+	background-color: silver;	 
 }
 
 .progressBar
@@ -278,59 +288,65 @@ $(function(){
 </head>
 
 <body>
-	<button id="but1" type="button" style="width: 80px; height: 80px; background-color: #660000;">
-		<img src="color1.png">
-	</button>&nbsp;
-	<button id="but2" type="button" style="width: 80px; height: 80px; background-color: #888800;">
-		<img src="color2.png">
-	</button>&nbsp;
-	<button id="but3" type="button" style="width: 80px; height: 80px; background-color: #006600;">
-		<img src="color3.png">
-	</button>&nbsp;
-	<button id="but4" type="button" style="width: 80px; height: 80px; background-color: #0000CC;">
-		<img src="color4.png">
-	</button>
 	
-	<br><br><br>
+	<div class="out_player" style="width: 800px; height: 500px; line-height:0px">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		<button id="but1" type="button" style="width: 42px; height: 42px; background-color: #660000;">
+			<img src="color1.png" height="40" width="40">
+		</button>&nbsp;
+		<button id="but2" type="button" style="width: 42px; height: 42px; background-color: #888800;">
+			<img src="color2.png" height="40" width="40">
+		</button>&nbsp;
+		<button id="but3" type="button" style="width: 42px; height: 42px; background-color: #006600;">
+			<img src="color3.png" height="40" width="40">
+		</button>&nbsp;
+		<button id="but4" type="button" style="width: 42px; height: 42px; background-color: #0000CC;">
+			<img src="color4.png" height="40" width="40">
+		</button>
+
+		
+		
+		<div id="player" class="position_player" style="width: 670px; height: 200px"><!-- ;display: none-->
+			<br><br><br><br>&nbsp;&nbsp;
+			<button id="but_switch" style="width: 80px; height: 80px; background-color: #222222; top: 10px" type="button">
+				<img id="change" src="pause.jpg">
+			</button>&nbsp;&nbsp;
+				
+	  		<div class="progressBar" style="left: 105px; top: -80px">
+	   			<div class="timeBar"></div>
+			</div>&nbsp;&nbsp;	
+			
+			<div class="volume" style="left: 415px; top: -155px">
+				<img src="vol_100.png" class="volumeBar">
+			</div>&nbsp;&nbsp;
 	
-	<div id="player" class="position_player" style="width: 670px; height: 200px; display: none"><!-- ;display: none-->
-		<br>&nbsp;&nbsp;
-		<button id="but_switch" style="width: 80px; height: 80px; background-color: #222222;" type="button">
-			<img id="change" src="pause.jpg">
-		</button>&nbsp;&nbsp;
-		
-  		<div class="progressBar" style="left: 105px; top: -80px">
-   			<div class="timeBar"></div>
-		</div>&nbsp;&nbsp;	
-		
-		<div class="volume" style="left: 415px; top: -173px">
-			<img src="vol_100.png" class="volumeBar">
-		</div>&nbsp;&nbsp;
-
-		<div class="next" style="left: 525px; top: -293px">
-			<button id="but_next" style="width: 80px; height: 80px; background-color: #222222;" type="button">
-				<img id="next_one" src="next.jpg">
-			</button>
-		</div>
-
-		<div class="time" style="left: 110px; top: -293px">
-   			<span class="current"></span>
-  			<span class="duration"></span>
-		</div>
-		
-		<div class="song_name" style="left: 110px; top: -305px">
-   			<span class="now"></span>
+			<div class="next" style="left: 525px; top: -255px">
+				<button id="but_next" style="width: 80px; height: 80px; background-color: #222222;" type="button">
+					<img id="next_one" src="next.jpg">
+				</button>
+			</div>
+	
+			<div class="time" style="left: 110px; top: -235px">
+	   			<span class="current"></span>
+	  			<span class="duration"></span>
+			</div>
+			
+			<div class="song_name" style="left: 110px; top: -235px">
+	   			<span class="now"></span>
+			</div>
+	
 		</div>
 
 	</div>
 	
-	<p>-----------最上列按鈕是四種不同風格的音樂，按下後，播放器就會出現</p>
-	<p>-----------目前共4*5首，任意按下按鍵就會播放該風格音樂，連續按同一個按鍵也不會連續重複</p>
-	<p>-----------播放器目前六種功能(1)開始/暫停按鍵(2)可拉式拉條(3)可調式音量(4)切歌鍵(5)顯示目前/整首時間(6)顯示歌名</p>
-	<p>-----------音量鍵不想做那麼仔細，所以只分六種；歌名等確定資料之後再改</p>	
-	<p>-----------這些是基本功能，還沒使用CSS以及大量音樂(你們要做的)</p>	
-	<p>-----------以下是幫助你判斷，最後不會有這些</p>	
+	<audio id="play" src="music1_1.mp3" ></audio>
+<!--
+	<p>-----------以下是幫助你判斷-----------</p>	
 	<audio id="play" controls="controls" src="music1_1.mp3" ></audio>
-	
+	<p>現在正在播<div class="now"></div></p>
+-->
+
 </body>
 </html>
