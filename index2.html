@@ -16,7 +16,7 @@ $(function(){
 		do{
 			num = get_random_val();
 		} while(num==last_num1);
-		$("#change").attr("src","pause.jpg");
+		$("#change").attr("src","pause.png");
 		
 		$(".now").text("1_"+num);
 		document.getElementById('bgc').style.backgroundColor = "#FFCCCC";
@@ -34,7 +34,7 @@ $(function(){
 		do{
 			num = get_random_val();
 		} while(num==last_num2);
-		$("#change").attr("src","pause.jpg");
+		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#FFEECC";
 		
 		$(".now").text("2_"+num);
@@ -52,7 +52,7 @@ $(function(){
 		do{
 			num = get_random_val();
 		} while(num==last_num3);
-		$("#change").attr("src","pause.jpg");
+		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#FFFFCC";
 		
 		$(".now").text("3_"+num);
@@ -70,7 +70,7 @@ $(function(){
 		do{
 			num = get_random_val();
 		} while(num==last_num4);
-		$("#change").attr("src","pause.jpg");
+		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#CCFFCC";
 		
 		$(".now").text("4_"+num);
@@ -88,7 +88,7 @@ $(function(){
 		do{
 			num = get_random_val();
 		} while(num==last_num5);
-		$("#change").attr("src","pause.jpg");
+		$("#change").attr("src","pause.png");
 		
 		$(".now").text("5_"+num);
 		document.getElementById('bgc').style.backgroundColor = "#CCDDFF";
@@ -106,7 +106,7 @@ $(function(){
 		do{
 			num = get_random_val();
 		} while(num==last_num6);
-		$("#change").attr("src","pause.jpg");
+		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#CCCCFF";
 		
 		$(".now").text("6_"+num);
@@ -124,7 +124,7 @@ $(function(){
 		do{
 			num = get_random_val();
 		} while(num==last_num7);
-		$("#change").attr("src","pause.jpg");
+		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#EECCFF";
 		
 		$(".now").text("7_"+num);
@@ -150,7 +150,7 @@ $(function(){
 		do{
 			num = get_random_val();
 		} while(num==current_num);
-		$("#change").attr("src","pause.jpg");
+		$("#change").attr("src","pause.png");
 		
 		$(".now").text(current_class+"_"+num);
 		
@@ -164,14 +164,14 @@ $(function(){
 	$("#but_switch").click(function() {
 		if(change==0)
 		{
-			$("#change").attr("src","play.jpg");
+			$("#change").attr("src","play.png");
 			audio.get(0).pause();	
 			change = 1;
 		}
 			
 		else
 		{
-			$("#change").attr("src","pause.jpg");
+			$("#change").attr("src","pause.png");
 			audio.get(0).play();	
 			change = 0;
 		}
@@ -272,34 +272,67 @@ $(function(){
 		change = 0;
 		
 	});
+	
+	audio[0].volume = 1;
+	$("#vol_low").click(function() {  
+	
+		audio[0].volume = audio[0].volume - 0.2;
+		if(audio[0].volume < 0.2)
+		{
+			audio[0].volume = 0;
+			$("#vol_low").css("background-color", "#AA0000");
+		}
+		else if(audio[0].volume <= 1)
+		{
+			$("#vol_low").css("background-color", "#000000");
+			$("#vol_high").css("background-color", "#000000");
+		}
+	
+	});
+
+	$("#vol_high").click(function() {  
+	
+		audio[0].volume = audio[0].volume + 0.2;
+		if(audio[0].volume > 0.8)
+		{
+			audio[0].volume = 1;
+			$("#vol_high").css("background-color", "#AA0000");
+		}
+		else if(audio[0].volume >= 0)
+		{
+			$("#vol_high").css("background-color", "#000000");
+			$("#vol_low").css("background-color", "#000000");
+		}
+	
+	});
+
+
 });
 </script>
 
 <style type="text/css">
 .out_player {
-	padding: 50px;
 	position: absolute;
 	left: 50%;
-	margin-left: -450px;
 }
 .position_player {
-	padding: 50px;
-	background-color: #A46644;	 
+	padding: 100px;
+	background-color: #AAAAAA;	 
 }
 .progressBar
 {
    position: relative;
-   width: 455px;
-   height: 50px;
+   width: 570px;
+   height: 40px;
    background-color: #000000;
 }
 .timeBar
 {
    position: absolute;
-   top: 18px;
+   top: 14px;
    left: 0;
    width: 0;
-   height: 15px;
+   height: 12px;
    background-color: #ff0000;
 }
 .volume
@@ -330,52 +363,99 @@ $(function(){
 
 </head>
 
-<body id="bgc" style="background-color: #FFFFFF">
+<body id="bgc" style="background-color: #FFFFFF; line-height:0px;">
 	
-	<div class="out_player" style="width: 800px; height: 500px; line-height:0px">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-		<button id="but1" type="button" style="width: 40px; height: 40px; background-color: #FF0000; outline:none; border:1.5px #880000 solid">1</button>&nbsp;
-		<button id="but2" type="button" style="width: 40px; height: 40px; background-color: #FFAA00; outline:none; border:1.5px #885500 solid">2</button>&nbsp;
-		<button id="but3" type="button" style="width: 40px; height: 40px; background-color: #FFFF00; outline:none; border:1.5px #888800 solid">3</button>&nbsp;
-		<button id="but4" type="button" style="width: 40px; height: 40px; background-color: #00FF00; outline:none; border:1.5px #008800 solid">4</button>&nbsp;
-		<button id="but5" type="button" style="width: 40px; height: 40px; background-color: #0088FF; outline:none; border:1.5px #004488 solid">5</button>&nbsp;
-		<button id="but6" type="button" style="width: 40px; height: 40px; background-color: #0000FF; outline:none; border:1.5px #000088 solid">6</button>&nbsp;
-		<button id="but7" type="button" style="width: 40px; height: 40px; background-color: #BB00FF; outline:none; border:1.5px #550088 solid">7</button>	
-		
-		<div style="width: 30px; height: 200px; background-color: #000000"></div>&nbsp;&nbsp;
-		<div id="player" class="position_player" style="width: 670px; height: 200px">
-			<!-- ;display: none-->
-			<br><br><br><br>&nbsp;&nbsp;
-			<button id="but_switch" style="outline:none; background-color: #A46644; border:0px" type="button" >
-				<img id="change" src="pause.jpg">
-			</button>&nbsp;&nbsp;
-				
-	  		<div class="progressBar" style="left: 110px; top: 75px">
-	   			<div class="timeBar"></div>
-			</div>&nbsp;&nbsp;	
-			
-			<div class="volume" style="left: 415px; top: -155px">
-				<img src="vol_100.png" class="volumeBar">
-			</div>&nbsp;&nbsp;
-	
-			<div class="next" style="left: 565px; top: -228px">
-				<button id="but_next" style="outline:none; background-color: #A46644; border:0px" type="button">
-					<img id="next_one" src="next.jpg">
-				</button>
-			</div>
-	
-			<div class="time" style="left: 110px; top: -235px">
-	   			<span class="current"></span>
-	  			<span class="duration"></span>
-			</div>
-			
-			<div class="song_name" style="left: 210px; top: -285px">
-	   			<span class="now"></span>
-			</div>
-
+	<div class="out_player" style="width: 1000px; height: 630px; margin-left: -475px; padding: 50px 50px 0px 50px">
+		<div style="width: 700px; height: 80px; padding: 0px 0px 0px 225px">
+			<button id="but1" type="button" style="width: 50px; height: 80px; background-color: #FF0000; outline:none; border:3px #440000 solid; border-bottom-style: none;"></button>&nbsp;
+			<button id="but2" type="button" style="width: 50px; height: 80px; background-color: #FFAA00; outline:none; border:3px #442200 solid; border-bottom-style: none;"></button>&nbsp;
+			<button id="but3" type="button" style="width: 50px; height: 80px; background-color: #FFFF00; outline:none; border:3px #444400 solid; border-bottom-style: none;"></button>&nbsp;
+			<button id="but4" type="button" style="width: 50px; height: 80px; background-color: #00FF00; outline:none; border:3px #004400 solid; border-bottom-style: none;"></button>&nbsp;
+			<button id="but5" type="button" style="width: 50px; height: 80px; background-color: #0088FF; outline:none; border:3px #002244 solid; border-bottom-style: none;"></button>&nbsp;
+			<button id="but6" type="button" style="width: 50px; height: 80px; background-color: #0000FF; outline:none; border:3px #000044 solid; border-bottom-style: none;"></button>&nbsp;
+			<button id="but7" type="button" style="width: 50px; height: 80px; background-color: #BB00FF; outline:none; border:3px #220044 solid; border-bottom-style: none;"></button>	
 		</div>
+		
+		<div style="width: 1000px; height: 378px">
+			<div style="width: 50px; height: 175px; border:none; float:left">
+				<div style="width: 50px; height: 100px; border:none"></div>
+				<div style="width: 50px; height: 75px; border:3px #000000 solid;">
+					<button id="vol_low" type="button" style="width: 50px; height: 75px;border:none; background-color: #000000; outline:none;"></button>
+				</div>
+			</div>
+			<div id="player" class="position_player" style="width: 570px; height: 175px; border:3px #000000 solid; float:left;">
+				<!-- ;display: none-->
+				<br><br><br><br>&nbsp;&nbsp;
+				<button id="but_switch" style="outline:none; background-color: #AAAAAA; border:0px" type="button" >
+					<img id="change" src="pause.png" style="width: 100px; height: 100px">
+				</button>&nbsp;&nbsp;
+					
+		  		<div class="progressBar" style="left: 0px; top: 75px">
+		   			<div class="timeBar"></div>
+				</div>&nbsp;&nbsp;	
+				
+				<!--
+				<div class="volume" style="left: 415px; top: -155px">
+					<img src="vol_100.png" class="volumeBar">
+				</div>&nbsp;&nbsp;
+				-->
+				
+				<div class="next" style="left: 447px; top: -143px">
+					<button id="but_next" style="outline:none; background-color: #AAAAAA; border:0px" type="button">
+						<img id="next_one" src="next.png" style="width: 100px; height: 100px">
+					</button>
+				</div>
+				
+				<!--
+				<div class="time" style="left: 110px; top: -270px">
+		   			<span class="current"></span>
+		  			<span class="duration"></span>
+				</div>
+					
+				<div class="song_name" style="left: 210px; top: -270px">
+		   			<span class="now"></span>
+				</div>
+			
+				-->
+				
+			</div>
+		
+			<div style="width: 50px; height: 175px; border:none; float:left">
+				<div style="width: 50px; height: 100px; border:none"></div>
+				<div style="width: 50px; height: 75px; border:3px #000000 solid;border-left-style: none;">
+					<button id="vol_high" type="button" style="width: 50px; height: 75px;border:none; background-color: #AA0000; outline:none;"></button>
+				</div>
+			</div>
+		</div>
+	
+	
+	
+	
+	
+		<div class="out_player" style="width: 1300px; height: 250px; margin-left: -741px; padding: 0px 50px 50px 50px">
+			<div style="width: 241px; height: 230px; border:none; float:left">
+				<div style="width: 241px; height: 43px; border:none"></div>
+				<div style="width: 241px; height: 182px; border:none;">
+					<img src="left_hand.png">
+				</div>
+			</div>
+			<div id="image" class="position_player" style="width: 570px; height: 250px; border:3px #000000 solid; float:left;">
+				
+				<div class="song_name">
+		   			<span class="now"></span>
+				</div>
+	
+			</div>
+		
+			<div style="width: 250px; height: 220px; border:none; float:left">
+				<div style="width: 250px; height: 182px; border:none;">
+					<img src="right_hand.png">
+				</div>
+				<div style="width: 250px; height: 38px; border:none"></div>
+			</div>
+		</div>
+
+
 
 	</div>
 	
