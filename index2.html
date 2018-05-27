@@ -21,7 +21,7 @@ $(function(){
 		} while(num==last_num1);
 		$("#change").attr("src","pause.png");
 		
-		$(".now").text("1_"+num);
+		$(".now").text("  1_"+num);
 		document.getElementById('bgc').style.backgroundColor = "#FFCCCC";
 		
 		audio.get(0).pause();	
@@ -41,7 +41,7 @@ $(function(){
 		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#FFEECC";
 		
-		$(".now").text("2_"+num);
+		$(".now").text("  2_"+num);
 		
 		audio.get(0).pause();	
 		audio.attr("src","music2_"+num+".mp3"); 
@@ -60,7 +60,7 @@ $(function(){
 		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#FFFFCC";
 		
-		$(".now").text("3_"+num);
+		$(".now").text("  3_"+num);
 		
 		audio.get(0).pause();	
 		audio.attr("src","music3_"+num+".mp3"); 
@@ -79,7 +79,7 @@ $(function(){
 		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#CCFFCC";
 		
-		$(".now").text("4_"+num);
+		$(".now").text("  4_"+num);
 		
 		audio.get(0).pause();	
 		audio.attr("src","music4_"+num+".mp3"); 
@@ -97,7 +97,7 @@ $(function(){
 		} while(num==last_num5);
 		$("#change").attr("src","pause.png");
 		
-		$(".now").text("5_"+num);
+		$(".now").text("  5_"+num);
 		document.getElementById('bgc').style.backgroundColor = "#CCDDFF";
 		
 		audio.get(0).pause();	
@@ -117,7 +117,7 @@ $(function(){
 		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#CCCCFF";
 		
-		$(".now").text("6_"+num);
+		$(".now").text("  6_"+num);
 		
 		audio.get(0).pause();	
 		audio.attr("src","music2_"+num+".mp3"); 
@@ -136,7 +136,7 @@ $(function(){
 		$("#change").attr("src","pause.png");
 		document.getElementById('bgc').style.backgroundColor = "#EECCFF";
 		
-		$(".now").text("7_"+num);
+		$(".now").text("  7_"+num);
 		
 		audio.get(0).pause();	
 		audio.attr("src","music3_"+num+".mp3"); 
@@ -162,7 +162,7 @@ $(function(){
 		} while(num==current_num);
 		$("#change").attr("src","pause.png");
 		
-		$(".now").text(current_class+"_"+num);
+		$(".now").text("  "+current_class+"_"+num);
 		
     	audio.currentTime = 0;
 		audio.attr("src","music"+current_class+"_"+num+".mp3"); 
@@ -277,7 +277,7 @@ $(function(){
 			num = get_random_val();
 		} while(num==current_num);
 		
-		$(".now").text(current_class+"_"+num);
+		$(".now").text("  "+current_class+"_"+num);
 		
     	audio.currentTime = 0;
 		audio.attr("src","music"+current_class+"_"+num+".mp3"); 
@@ -295,12 +295,12 @@ $(function(){
 		if(audio[0].volume < 0.2)
 		{
 			audio[0].volume = 0;
-			$("#vol_low").css("background-color", "#AA0000");
+			$("#vol_low").css("background-color", "#FF6666");
 		}
 		else if(audio[0].volume <= 1)
 		{
-			$("#vol_low").css("background-color", "#000000");
-			$("#vol_high").css("background-color", "#000000");
+			$("#vol_low").css("background-color", "#AAAAAA");
+			$("#vol_high").css("background-color", "#AAAAAA");
 		}
 	
 	});
@@ -311,12 +311,12 @@ $(function(){
 		if(audio[0].volume > 0.8)
 		{
 			audio[0].volume = 1;
-			$("#vol_high").css("background-color", "#AA0000");
+			$("#vol_high").css("background-color", "#FF6666");
 		}
 		else if(audio[0].volume >= 0)
 		{
-			$("#vol_high").css("background-color", "#000000");
-			$("#vol_low").css("background-color", "#000000");
+			$("#vol_high").css("background-color", "#AAAAAA");
+			$("#vol_low").css("background-color", "#AAAAAA");
 		}
 	
 	});
@@ -325,9 +325,12 @@ $(function(){
 
     var jsImg_l = new Array("left_hand.png","left_hand2.png");
     var jsImg_r = new Array("right_hand.png","right_hand2.png");
-
-    var jsImg_len = jsImg_l.length;
-    var i=0;
+	var jsImg = new Array("foot5_1.png","foot1_1.png","foot5_1.png","foot3_1.png","foot5_1.png","foot2_1.png","foot5_1.png","foot2_1.png","foot5_1.png",
+							"foot5_2.png","foot1_2.png","foot5_2.png","foot3_2.png","foot5_2.png","foot2_2.png","foot5_2.png","foot2_2.png","foot5_2.png",
+								"foot4_1.png","foot4_2.png","foot4_1.png","foot4_2.png","foot4_1.png","foot4_2.png","foot4_1.png","foot4_2.png");
+    var jsImg_len = 2;
+    var jsImg_len2 = 26;
+    var i=0,j=0;
 
     setInterval("sequentialImg()",500);
     function sequentialImg(){ 
@@ -335,9 +338,13 @@ $(function(){
     	{
     		document.getElementById("left_hand").innerHTML  = "<img src='"+jsImg_l[i]+"' width=250 height=200>"; 
     		document.getElementById("right_hand").innerHTML  = "<img src='"+jsImg_r[i]+"' width=250 height=200>";      
+    		document.getElementById("foot").innerHTML  = "<img src='"+jsImg[j]+"'>";
     		i++;
+    		j++;
     		if(i>=jsImg_len)  
     			i=0;	
+       		if(j>=jsImg_len2)  
+    			j=0;
     	}
     }
 
@@ -350,7 +357,8 @@ $(function(){
 }
 .position_player {
 	padding: 100px;
-	background-color: #AAAAAA;	 
+	background-color: #AAAAAA;
+	background-image: url('iron.jpg');
 }
 .progressBar
 {
@@ -398,28 +406,29 @@ $(function(){
 
 <body id="bgc" style="background-color: #FFFFFF; line-height:0px;">
 	
-	<div class="out_player" style="width: 1000px; height: 630px; margin-left: -475px; padding: 50px 50px 0px 50px">
-		<div style="width: 700px; height: 80px; padding: 0px 0px 0px 225px">
+	<div class="out_player" style="width: 1200px; height: 630px; margin-left: -500px; padding: 50px 50px 0px 50px">
+		<div style="width: 700px; height: 80px; padding: 0px 0px 0px 250px">
 			<button id="but1" type="button" style="width: 50px; height: 80px; background-color: #FF0000; outline:none; border:3px #440000 solid; border-bottom-style: none;"></button>&nbsp;
 			<button id="but2" type="button" style="width: 50px; height: 80px; background-color: #FFAA00; outline:none; border:3px #442200 solid; border-bottom-style: none;"></button>&nbsp;
 			<button id="but3" type="button" style="width: 50px; height: 80px; background-color: #FFFF00; outline:none; border:3px #444400 solid; border-bottom-style: none;"></button>&nbsp;
 			<button id="but4" type="button" style="width: 50px; height: 80px; background-color: #00FF00; outline:none; border:3px #004400 solid; border-bottom-style: none;"></button>&nbsp;
 			<button id="but5" type="button" style="width: 50px; height: 80px; background-color: #0088FF; outline:none; border:3px #002244 solid; border-bottom-style: none;"></button>&nbsp;
 			<button id="but6" type="button" style="width: 50px; height: 80px; background-color: #0000FF; outline:none; border:3px #000044 solid; border-bottom-style: none;"></button>&nbsp;
-			<button id="but7" type="button" style="width: 50px; height: 80px; background-color: #BB00FF; outline:none; border:3px #220044 solid; border-bottom-style: none;"></button>	
-		</div>
-		
-		<div style="width: 1000px; height: 378px">
-			<div style="width: 50px; height: 175px; border:none; float:left">
-				<div style="width: 50px; height: 100px; border:none"></div>
-				<div style="width: 50px; height: 75px; border:3px #000000 solid;">
-					<button id="vol_low" type="button" style="width: 50px; height: 75px;border:none; background-color: #000000; outline:none;"></button>
+			<button id="but7" type="button" style="width: 50px; height: 80px; background-color: #BB00FF; outline:none; border:3px #220044 solid; border-bottom-style: none;"></button>
+		</div>			
+		<div style="width: 1200px; height: 378px">
+			<div style="width: 75px; height: 175px; border:none; float:left">
+				<div style="width: 75px; height: 100px; border:none"></div>
+				<div style="width: 75px; height: 75px; border:3px #000000 solid;">
+					<button id="vol_low" type="button" style="width: 75px; height: 75px;border:none; background-color: #AAAAAAAA; outline:none;">
+						<img src="vol_low.png" style="width: 60px; height: 46px">
+					</button>
 				</div>
 			</div>
 			<div id="player" class="position_player" style="width: 570px; height: 175px; border:3px #000000 solid; float:left;">
 				<!-- ;display: none-->
 				<br><br><br><br>&nbsp;&nbsp;
-				<button id="but_switch" style="outline:none; background-color: #AAAAAA; border:0px" type="button" >
+				<button id="but_switch" style="outline:none; border:0px;border-radius: 50px; background-color: #444444" type="button" >
 					<img id="change" src="play.png" style="width: 100px; height: 100px">
 				</button>&nbsp;&nbsp;
 					
@@ -434,7 +443,7 @@ $(function(){
 				-->
 				
 				<div class="next" style="left: 447px; top: -143px">
-					<button id="but_next" style="outline:none; background-color: #AAAAAA; border:0px" type="button">
+					<button id="but_next" style="outline:none; border:0px;border-radius: 50px; background-color: #444444" type="button">
 						<img id="next_one" src="next.png" style="width: 100px; height: 100px">
 					</button>
 				</div>
@@ -453,28 +462,34 @@ $(function(){
 				
 			</div>
 		
-			<div style="width: 50px; height: 175px; border:none; float:left">
-				<div style="width: 50px; height: 100px; border:none"></div>
-				<div style="width: 50px; height: 75px; border:3px #000000 solid;border-left-style: none;">
-					<button id="vol_high" type="button" style="width: 50px; height: 75px;border:none; background-color: #AA0000; outline:none;"></button>
+			<div style="width: 75px; height: 175px; border:none; float:left">
+				<div style="width: 75px; height: 100px; border:none"></div>
+				<div style="width: 75px; height: 75px; border:3px #000000 solid;border-left-style: none;">
+					<button id="vol_high" type="button" style="width: 75px; height: 75px;border:none; background-color: #FF6666; outline:none;">
+						<img src="vol_high.png" style="width: 70px; height: 65px">
+					</button>
 				</div>
 			</div>
+
 		</div>
 	
 	
 	
 	
 	
-		<div class="out_player" style="width: 1300px; height: 250px; margin-left: -750px; padding: 0px 50px 50px 50px">
+		<div class="out_player" style="width: 1300px; height: 300px; margin-left: -825px; padding: 0px 50px 50px 50px">
 			<div style="width: 250px; height: 200px; border:none; float:left">
 				<div id="left_hand" style="width: 250px; height: 200px; border:none;">
 					<img src="left_hand.png" style="width: 250px; height: 200px;">
 				</div>
 			</div>
-			<div id="image" class="position_player" style="width: 570px; height: 250px; border:3px #000000 solid; float:left;">
+			<div style="width: 570px; height: 300px; float:left; padding: 50px 100px 50px 100px; background-image: url('iron.jpg'); border:3px #000000 solid;">
 				
-				<div class="song_name">
-		   			<span class="now"></span>
+				<div class="song_name" style="width: 576px; height: 250px; background-color: #000000">
+		   			<div class="now" style="color:#FFFFFF; font-size:35px; width: 570px; height: 30px;padding: 30px 0px 0px 0px;text-align:center">&nbsp;</div>
+		   			<div id="image" style="width: 567px; height: 220px">
+		   				<img src="iron.jpg" style="width: 570px; height: 220px; border-top-style:none; border:3px #000000 solid;">	
+		   			</div>
 				</div>
 	
 			</div>
@@ -483,6 +498,10 @@ $(function(){
 				<div id="right_hand" style="width: 250px; height: 200px; border:none;">
 					<img src="right_hand.png" style="width: 250px; height: 200px;">
 				</div>
+			</div>
+			
+			<div id="foot" style="width: 500px; height: 300px; padding: 0px 0px 0px 400px">
+				<img src="foot5_1.png">
 			</div>
 		</div>
 
