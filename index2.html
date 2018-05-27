@@ -6,6 +6,9 @@
 <script src="//code.jquery.com/jquery-3.3.1.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script>
+
+	var status = 0;
+	
 $(function(){ 
 	var num,last_num1,last_num2,last_num3,last_num4,last_num5,last_num6,last_num7;
 	var current_num,current_class,change=0;
@@ -28,6 +31,7 @@ $(function(){
 		current_num = num;
 		current_class = 1;
 		change = 0;
+		status = 1;
 	});
 	$("#but2").click(function() { 
 		$("#player").show();
@@ -46,6 +50,7 @@ $(function(){
 		current_num = num;
 		current_class = 2;
 		change = 0;
+		status = 1;
 	});
 	$("#but3").click(function() {  
 		$("#player").show();
@@ -64,6 +69,7 @@ $(function(){
 		current_num = num;
 		current_class = 3;
 		change = 0;
+		status = 1;
 	});
 	$("#but4").click(function() {
 		$("#player").show();
@@ -82,6 +88,7 @@ $(function(){
 		current_num = num;	
 		current_class = 4;
 		change = 0;
+		status = 1;
 	});
 	$("#but5").click(function() {  
 		$("#player").show();
@@ -100,6 +107,7 @@ $(function(){
 		current_num = num;
 		current_class = 5;
 		change = 0;
+		status = 1;
 	});
 	$("#but6").click(function() { 
 		$("#player").show();
@@ -118,6 +126,7 @@ $(function(){
 		current_num = num;
 		current_class = 6;
 		change = 0;
+		status = 1;
 	});
 	$("#but7").click(function() {  
 		$("#player").show();
@@ -136,6 +145,7 @@ $(function(){
 		current_num = num;
 		current_class = 7;
 		change = 0;
+		status = 1;
 	});
 
 
@@ -167,6 +177,7 @@ $(function(){
 			$("#change").attr("src","play.png");
 			audio.get(0).pause();	
 			change = 1;
+			status = 0;
 		}
 			
 		else
@@ -174,6 +185,7 @@ $(function(){
 			$("#change").attr("src","pause.png");
 			audio.get(0).play();	
 			change = 0;
+			status = 1;
 		}
 	});
 	audio.on('timeupdate', function() {
@@ -229,6 +241,7 @@ $(function(){
 	    audio[0].currentTime = maxduration * percentage / 100;
 	};
 	
+	/*
 	$('.volume').mousedown(function(e) {
 	var position2 = e.pageX - $('.volume').offset().left - 20;
 	var percentage2 = 100 * position2 / 62;
@@ -258,6 +271,7 @@ $(function(){
 	   }
 	   audio[0].volume = percentage2 / 100;
 	});
+	*/
 	$("#but_next").click(function() {
 		do{
 			num = get_random_val();
@@ -270,6 +284,7 @@ $(function(){
 		audio.get(0).play();
 		current_num = num;	
 		change = 0;
+		status = 1;
 		
 	});
 	
@@ -306,8 +321,26 @@ $(function(){
 	
 	});
 
-
 });
+
+    var jsImg_l = new Array("left_hand.png","left_hand2.png");
+    var jsImg_r = new Array("right_hand.png","right_hand2.png");
+
+    var jsImg_len = jsImg_l.length;
+    var i=0;
+
+    setInterval("sequentialImg()",500);
+    function sequentialImg(){ 
+    	if(status==1)
+    	{
+    		document.getElementById("left_hand").innerHTML  = "<img src='"+jsImg_l[i]+"' width=250 height=200>"; 
+    		document.getElementById("right_hand").innerHTML  = "<img src='"+jsImg_r[i]+"' width=250 height=200>";      
+    		i++;
+    		if(i>=jsImg_len)  
+    			i=0;	
+    	}
+    }
+
 </script>
 
 <style type="text/css">
@@ -387,7 +420,7 @@ $(function(){
 				<!-- ;display: none-->
 				<br><br><br><br>&nbsp;&nbsp;
 				<button id="but_switch" style="outline:none; background-color: #AAAAAA; border:0px" type="button" >
-					<img id="change" src="pause.png" style="width: 100px; height: 100px">
+					<img id="change" src="play.png" style="width: 100px; height: 100px">
 				</button>&nbsp;&nbsp;
 					
 		  		<div class="progressBar" style="left: 0px; top: 75px">
@@ -432,11 +465,10 @@ $(function(){
 	
 	
 	
-		<div class="out_player" style="width: 1300px; height: 250px; margin-left: -741px; padding: 0px 50px 50px 50px">
-			<div style="width: 241px; height: 230px; border:none; float:left">
-				<div style="width: 241px; height: 43px; border:none"></div>
-				<div style="width: 241px; height: 182px; border:none;">
-					<img src="left_hand.png">
+		<div class="out_player" style="width: 1300px; height: 250px; margin-left: -750px; padding: 0px 50px 50px 50px">
+			<div style="width: 250px; height: 200px; border:none; float:left">
+				<div id="left_hand" style="width: 250px; height: 200px; border:none;">
+					<img src="left_hand.png" style="width: 250px; height: 200px;">
 				</div>
 			</div>
 			<div id="image" class="position_player" style="width: 570px; height: 250px; border:3px #000000 solid; float:left;">
@@ -447,11 +479,10 @@ $(function(){
 	
 			</div>
 		
-			<div style="width: 250px; height: 220px; border:none; float:left">
-				<div style="width: 250px; height: 182px; border:none;">
-					<img src="right_hand.png">
+			<div style="width: 250px; height: 200px; border:none; float:left">
+				<div id="right_hand" style="width: 250px; height: 200px; border:none;">
+					<img src="right_hand.png" style="width: 250px; height: 200px;">
 				</div>
-				<div style="width: 250px; height: 38px; border:none"></div>
 			</div>
 		</div>
 
@@ -459,7 +490,7 @@ $(function(){
 
 	</div>
 	
-	<audio id="play" src="music1_1.mp3" ></audio>
+	<audio id="play" src=" " ></audio>
 <!--
 	<p>-----------以下是幫助你判斷-----------</p>	
 	<audio id="play" controls="controls" src="music1_1.mp3" ></audio>
